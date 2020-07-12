@@ -5,7 +5,15 @@
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "4.2.2",
-    "turbolinks": "^5.2.0"
+    "material-design-icons-iconfont": "^5.0.1",
+    "turbolinks": "^5.2.0",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.2",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.3.4",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify": "^2.2.27",
+    "vuex": "^3.4.0"
   },
   "version": "0.1.0",
   "devDependencies": {
