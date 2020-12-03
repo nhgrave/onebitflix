@@ -3,9 +3,9 @@ class Api::External::AuthenticationController < ApiController
 
   # POST /auth/login
   def login
-    @user = User.find_by email: params.permit(:email).require(:email)
+    @user = User.find_by email: params.require(:email)
 
-    if @user.try :authenticate, params.permit(:password).require(:password)
+    if @user.try :authenticate, params.require(:password)
       token = JsonWebTokenService.encode(user_id: @user.id)
       time = Time.now + 24.hours.to_i
 

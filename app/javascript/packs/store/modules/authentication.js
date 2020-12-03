@@ -7,7 +7,7 @@ const defaultState = {
 
 const mutations = {
   LOGIN_SUCCESS (state, userSesion) {
-    localStorage.setItem('userToken', res.data.token);
+    localStorage.setItem('userToken', userSesion.token);
 
     state.status = { loggedIn: true }
     state.userSesion = userSesion;
