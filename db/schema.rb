@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_163636) do
+ActiveRecord::Schema.define(version: 2021_03_06_194748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.string "video_key"
+    t.integer "episode_number"
+    t.bigint "serie_id"
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_movies_on_category_id"
+    t.index ["serie_id"], name: "index_movies_on_serie_id"
+  end
+
+  create_table "series", force: :cascade do |t|
+    t.string "title", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_series_on_category_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -23,4 +50,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_163636) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "movies", "categories"
+  add_foreign_key "movies", "series", column: "serie_id"
+  add_foreign_key "series", "categories"
 end
